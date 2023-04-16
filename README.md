@@ -38,3 +38,14 @@ ex:$ javac CustomUno.java
 
 4.Run the compiled Java code using the java command, specifying the name of the main class that contains the main method
 ex:$ java CustomUno
+
+===========================>AutoMated<=================================
+Copy Below lines after editing path where you clone repository
+
+cd path
+javac CustomUno.java
+java CustomUno
+
+Save above as auto.sh
+chmod +x auto.sh
+./auto.sh
