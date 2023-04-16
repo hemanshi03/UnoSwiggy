@@ -193,10 +193,16 @@ public class Game {
     return false;
   }
 
+  /*
+   * Returns number of players in the game
+   */
   public int getNumberOfPlayer() {
     return this.players.length;
   }
 
+  /*
+   * Returns player at index
+   */
   public Player getPlayerAtIndex(int index) {
     if (
       index >= 0 && index < this.getNumberOfPlayer()
@@ -205,10 +211,17 @@ public class Game {
     return null;
   }
 
+  /*
+   * Returns true if draw Deck pile Empty
+   */
   boolean drawDeckEmpty() {
     return this.deck.deck.size() == 0 ? true : false;
   }
 
+  /*
+   * Executes untill any player has won or Draw Card pile
+   * empty
+   */
   void takeTurn() {
     int index;
     System.out.println("Current turn " + getPlayerAtIndex(turn).getName());
