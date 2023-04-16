@@ -5,13 +5,24 @@ import java.util.Random;
 
 public class Deck {
 
+  /*
+   * Deck of 52 cards
+   */
   ArrayList<Card> deck;
+
+  /*
+   * This deck will be used to shuffle cards
+   * once in the beggining
+   */
   ArrayList<Card> shuffledDeck;
 
   Deck() {
     this.deck = new ArrayList<>();
   }
 
+  /*
+   * Returns Suit object
+   */
   private Suit getSuit(int suit) {
     if (suit == 0) return new Club();
     if (suit == 1) return new Diamond();
@@ -20,26 +31,49 @@ public class Deck {
     return null;
   }
 
+  /*
+   * Return ActionRank with rank set ace
+   */
   private Rank getRankForAce() {
     return new ActionRank(0);
   }
 
+  /*
+   * Return ActionRank with rank set Jack
+   */
   private Rank getRankForJack() {
     return new ActionRank(11);
   }
 
+  /*
+   * Return ActionRank with rank set Queen
+   */
   private Rank getRankForQueen() {
     return new ActionRank(12);
   }
 
+  /*
+   * Return ActionRank with rank set King
+   */
   private Rank getRankForKing() {
     return new ActionRank(13);
   }
 
+  /*
+   * Return NumberRank with rank set to num arg
+   */
   private Rank getRankForNumber(int num) {
     return new NumberRank(num);
   }
 
+  /*
+   *
+   * Initializes Deck with 52 cards in sorted
+   * [ Club Ace, Club Two, ...... Club King,
+   *   Diamond Ace , Diamond Two, ......., Diamond King,
+   *   Heart Ace, Heart Two, ....., Heart King,
+   *   Spade Ace, Spade Two,......, Spade King]
+   */
   void initialize() {
     for (int i = 0; i < 4; i++) {
       Suit suit = getSuit(i);
@@ -53,6 +87,11 @@ public class Deck {
     }
   }
 
+  /*
+   *
+   * Shuffles the deck randomoly
+   * This will be done before we distribute cards to players
+   */
   void shuffle() {
     this.shuffledDeck = new ArrayList<>();
     int[] initialOrdering = {
@@ -127,5 +166,9 @@ public class Deck {
     shuffledDeck = null;
   }
 
+  /*
+   * Not usefull
+   * FIXME :- Method Should be removed
+   */
   void Deal(List<Player> players, int card_to_deal) {}
 }

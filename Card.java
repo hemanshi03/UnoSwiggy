@@ -14,22 +14,37 @@ class Card {
     this.suit = suit;
   }
 
+  /*
+   * Gets suit
+   */
   public int getSuit() {
     return this.suit.getSuit();
   }
 
+  /*
+   * Get suits string (Club, Diamond, Heart Spade)
+   */
   public String getSuitString() {
     return this.suit.getSuitString();
   }
 
+  /*
+   * Gets card rand
+   */
   public int getRank() {
     return this.rank.getRank();
   }
 
+  /*
+   * Print cards "Suit Rank"
+   */
   public String toString() {
     return this.getSuitString() + " " + this.getRank();
   }
 
+  /*
+   * Return true if card is action card
+   */
   public boolean cardIsActionCard() {
     return (
       this.getRank() == 0 ||
@@ -39,30 +54,50 @@ class Card {
     );
   }
 
+  /*
+   *
+   * Returns True if card is Number card
+   */
   public boolean cardIsNumberCard() {
     return !this.cardIsActionCard();
   }
 
+  /*
+   * Returns true if card is Ace
+   */
   public boolean isCardAce(Card card) {
     if (card.getRank() == 0) return true;
     return false;
   }
 
+  /*
+   * Returns true if card is Jack
+   */
   public boolean isCardJack(Card card) {
     if (card.getRank() == 11) return true;
     return false;
   }
 
+  /*
+   * Returns true if card is Queen
+   */
   public boolean isCardQueen(Card card) {
     if (card.getRank() == 12) return true;
     return false;
   }
 
+  /*
+   * Returns true if card is King
+   */
   public boolean isCardKing(Card card) {
     if (card.getRank() == 13) return true;
     return false;
   }
 
+  /*
+   * Way to draw UI cards on terminals
+   * Implementation pending, not used anywhere
+   */
   public char[][] draw() {
     char[][] a = new char[5][5];
     return a;

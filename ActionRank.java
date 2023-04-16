@@ -1,5 +1,8 @@
 public class ActionRank implements Rank {
 
+  /*
+   * Defines rank of a card
+   */
   int rank;
 
   ActionRank() {}
@@ -8,6 +11,9 @@ public class ActionRank implements Rank {
     this.setRank(rank);
   }
 
+  /*
+   * Getters and Setter for rank
+   */
   public void setRank(int rank) {
     this.rank = rank;
   }

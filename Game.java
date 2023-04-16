@@ -3,10 +3,29 @@ import java.util.List;
 
 public class Game {
 
+  /*
+   * Indicate player's turn
+   */
   int turn;
+
+  /*
+   * Reference of Deck Class
+   */
   Deck deck;
+
+  /*
+   * Array of players
+   */
   Player players[];
+
+  /*
+   * Discarded / Played Cards
+   */
   List<Card> discardedCards;
+
+  /*
+   * return true Should next turn be reversed?
+   */
   boolean reverse;
 
   Game(int numOfPlayer) {
@@ -17,10 +36,17 @@ public class Game {
     this.reverse = false;
   }
 
+  /*
+   * Return true if turns reversed
+   */
   boolean isTurnReversed() {
     return this.reverse;
   }
 
+  /*
+   * setReverse to value
+   * Remove played card from Player's deck
+   */
   void setReverse(boolean val, Card playedCard, int index) {
     Player currentPlayer = this.getCurrrentPlayer();
     currentPlayer.removeCard(index);
@@ -30,24 +56,40 @@ public class Game {
     this.reverse = val;
   }
 
+  /*
+   * Sets turn
+   */
   void setTurn(int turn) {
     this.turn = turn % this.getNumberOfPlayer();
   }
 
+  /*
+   * Gets turn
+   */
   int getTurn() {
     return this.turn % this.getNumberOfPlayer();
   }
 
+  /*
+   * Gets next turn
+   * also return valid if reverse = true
+   */
   int getNextTurn() {
     if (isTurnReversed()) return (
       (this.getTurn() - 1) % this.getNumberOfPlayer()
     ); else return (this.getTurn() + 1) % this.getNumberOfPlayer();
   }
 
+  /*
+   * Return true if reverse == true
+   */
   boolean getReverse() {
     return this.reverse;
   }
 
+  /*
+   * Action to do when player play skipCard/Ace
+   */
   void skipTurn(Card cardPlayed, int index, boolean withRemoval) {
     if (withRemoval) {
       Player currentPlayer = this.getCurrrentPlayer();
@@ -66,12 +108,18 @@ public class Game {
       );
   }
 
+  /*
+   * Set turn to next
+   */
   void nextTurn() {
     if (isTurnReversed()) this.setTurn(this.getTurn() - 1); else this.setTurn(
         this.getTurn() + 1
       );
   }
 
+  /*
+   * Action to do when player plays plusTwoCard/Queen
+   */
   void plusTwo(Card cardPlayed, int index) {
     Player currentPlayer = this.getCurrrentPlayer();
     currentPlayer.removeCard(index);
@@ -94,6 +142,9 @@ public class Game {
     this.skipTurn(cardPlayed, index, false);
   }
 
+  /*
+   * Action to do when player plays plusFourCard/Jack
+   */
   void plusFour(Card cardPlayed, int index) {
     Player currentPlayer = this.getCurrrentPlayer();
     currentPlayer.removeCard(index);
@@ -119,6 +170,10 @@ public class Game {
     this.skipTurn(cardPlayed, index, false);
   }
 
+  /*
+   * Prints player's deck
+   * FIXME: Maybe redundant remove if so
+   */
   void printPlayerDeck(int index) {
     Player p = this.getPlayerAtIndex(index);
     List<Card> playersCards = p.getCards();
@@ -128,6 +183,9 @@ public class Game {
     }
   }
 
+  /*
+   * Returns true if any player has won
+   */
   boolean hasAnyPlayerWon() {
     for (int i = 0; i < this.players.length; i++) {
       if (this.players[i].hasPlayerWon()) return true;

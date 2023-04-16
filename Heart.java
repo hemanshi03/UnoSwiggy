@@ -1,11 +1,18 @@
 public class Heart implements Suit {
 
+  /*
+   * Defines rank of a card
+   */
   int suit;
 
   Heart() {
     this.setSuit(2);
   }
 
+  
+  /*
+   * Getters and Setters
+   */
   public void setSuit(int suit) {
     this.suit = suit;
   }
